@@ -6,7 +6,7 @@
     <frame name="rank" src="../contest.php">
     <frame name="status" src="../status.php">
     <noframes>
-    
+
     </noframes>
 </frameset>
 </html>
