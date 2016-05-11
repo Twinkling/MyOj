@@ -1,12 +1,13 @@
 <?php @session_start();
 	ini_set("display_errors","Off");
 static 	$DB_HOST="localhost"; // 数据库的服务器地址
-static 	$DB_NAME="jol"; // 数据库名
+static 	$DB_NAME="jmu"; // 数据库名
 static 	$DB_USER="root"; // 数据库用户名
 static 	$DB_PASS="TwinklingZ"; // 数据库密码
 	// connect db 
 static 	$OJ_NAME="JMU"; // OJ的名字，将取代页面标题等位置HUSTOJ字样。
 static 	$OJ_HOME="./"; // OJ的首页地址
+        $OJ_SERVE_ADD="http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/MyOj"; // OJ服务器地址
 static 	$OJ_ADMIN="root@localhost"; // 管理员email
 static 	$OJ_DATA="/home/judge/data"; // 测试数据所在目录，实际位置。
 static 	$OJ_BBS="discuss3"; //"bbs" 论坛的形式，discuss为自带的简单论坛，bbs为外挂论坛，参考bbs.php代码。

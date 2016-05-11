@@ -16,16 +16,11 @@
 				<a class='btn btn-primary' href="../index.php" target="_parent">首页</a>
 			</li>
 			<li>
-				<a class='btn btn-primary' href="watch.php" target="main"><b><?php echo $MSG_SEEOJ?></b></a>
+				<!-- <a class='btn btn-primary' href="watch.php" target="main"><b><?php //echo $MSG_SEEOJ?></b></a> -->
+				<a class='btn btn-primary' href="../index.php" target="main"><b><?php echo $MSG_SEEOJ?></b></a>
 			</li>
 			<?php if (isset($_SESSION['administrator'])){
 			?>
-			<!-- <li>
-				<a class='btn btn-primary' href="news_add_page.php" target="main"><b><?php //echo $MSG_ADD.$MSG_NEWS?></b></a>
-			</li>
-			<li>
-				<a class='btn btn-primary' href="news_list.php" target="main"><b><?php //echo $MSG_NEWS.$MSG_LIST?></b></a>
-			</li> -->
 			<?php }
 			if (isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
 			?>
@@ -53,9 +48,6 @@
 			<?php }
 			if (isset($_SESSION['administrator'])){
 			?>
-			<!-- <li>
-				<a class='btn btn-primary' href="team_generate.php" target="main"><b><?php echo $MSG_TEAMGENERATOR?></b></a>
-			</li> -->
 			<li>
 				<a class='btn btn-primary' href="setmsg.php" target="main"><b><?php echo $MSG_SETMESSAGE?></b></a>
 			</li>
@@ -64,12 +56,6 @@
 			?>
 			<li>
 				<a class='btn btn-primary' href="changepass.php" target="main"><b><?php echo $MSG_SETPASSWORD?></b></a>
-			</li>
-			<?php }
-			if (isset($_SESSION['administrator'])){
-			?>
-			<li>
-				<a class='btn btn-primary' href="rejudge.php" target="main"><b><?php echo $MSG_REJUDGE?></b></a>
 			</li>
 			<?php }
 			if (isset($_SESSION['administrator'])){
@@ -86,14 +72,6 @@
 			<?php }
 			if (isset($_SESSION['administrator'])){
 			?>
-			<!--
-			<li>
-				<a class='btn btn-primary' href="source_give.php" target="main"><b><?php echo $MSG_GIVESOURCE?></b></a>
-			</li>
-			-->
-			<?php }
-			if (isset($_SESSION['administrator'])){
-			?>
 			<li>
 				<a class='btn btn-primary' href="problem_export.php" target="main"><b><?php echo $MSG_EXPORT.$MSG_PROBLEM?></b></a>
 			</li>
@@ -104,12 +82,6 @@
 				<a class='btn btn-primary' href="problem_import.php" target="main"><b><?php echo $MSG_IMPORT.$MSG_PROBLEM?></b></a>
 			</li>
 			<?php }
-			if (isset($_SESSION['administrator'])){
-			?>
-			<li>
-				<a class='btn btn-primary' href="update_db.php" target="main"><b><?php echo $MSG_UPDATE_DATABASE?></b></a>
-			</li>
-			<?php }
 			if (isset($OJ_ONLINE)&&$OJ_ONLINE){
 			?>
 			<li>
@@ -117,17 +89,6 @@
 			</li>
 			<?php }
 			?>
-
-			<!-- <li>
-				<a class='btn btn-primary' href="http://code.google.com/p/hustoj/" target="_blank"><b>HUSTOJ</b></a>
-			</li>
-			<li>
-				<a class='btn btn-primary' href="http://code.google.com/p/freeproblemset/" target="_blank"><b>FreeProblemSet</b></a>
-			</li>
-			<li>
-				<a class='btn btn-primary' href="http://acmclub.com" target="_blank"><b>ACM俱乐部免费开通校级OJ服务器</b></a>
-			</li> -->
-
 		</ol>
 		<?php if (isset($_SESSION['administrator'])&&!$OJ_SAE){
 		?>

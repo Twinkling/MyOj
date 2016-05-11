@@ -7,6 +7,7 @@
 <!--    <meta name="description" content="">-->
 <!--    <meta name="author" content="">-->
 <!--    <link rel="icon" href="../../favicon.ico">-->
+    <link rel="shortcut icon" <?php echo "href=\"".$OJ_SERVE_ADD."/favicon.ico\""?> type="image/x-icon">
 
     <title><?php echo $OJ_NAME?></title>  
     <?php include("template/$OJ_TEMPLATE/css.php");?>	    

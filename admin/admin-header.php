@@ -1,7 +1,7 @@
 <?php @session_start();?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel=stylesheet href='../include/hoj.css' type='text/css'>
-<script src="../template/bs3/jquery.min.js"></script>
+<script src="../template/jmu/jquery.min.js"></script>
 <script>
 $("document").ready(function (){
   $("form").append("<div id='csrf' />");

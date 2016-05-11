@@ -6,7 +6,7 @@
 	$MSG_STATUS="状态";
 	$MSG_RANKLIST="排名";
 	$MSG_CONTEST="竞赛&作业";
-  $MSG_RECENT_CONTEST="名校联赛";
+    $MSG_RECENT_CONTEST="名校联赛";
 	$MSG_LOGOUT="注销";
 	$MSG_LOGIN="登录";
 	$MSG_REGISTER="注册";
@@ -31,23 +31,23 @@
 	$MSG_Runtime_Click="运行错误(点击看详细)";
 	$MSG_Compile_Click="编译错误(点击看详细)";
 	$MSG_Compile_OK="编译成功";
-  $MSG_Click_Detail="点击看详细";
-   $MSG_Manual="人工判题";
-   $MSG_OK="确定";
-  $MSG_Explain="输入判定原因与提示";
+  	$MSG_Click_Detail="点击看详细";
+    $MSG_Manual="人工判题";
+    $MSG_OK="确定";
+  	$MSG_Explain="输入判定原因与提示";
   
 	//fool's day
-if(date('m')==4&&date('d')==1&&rand(0,100)<10){
-        $MSG_Accepted="人品问题-愚人节快乐";
-$MSG_Presentation_Error="人品问题-愚人节快乐";
-$MSG_Wrong_Answer="人品问题-愚人节快乐";
-$MSG_Time_Limit_Exceed="人品问题-愚人节快乐";
-$MSG_Memory_Limit_Exceed="人品问题-愚人节快乐";
-$MSG_Output_Limit_Exceed="人品问题-愚人节快乐";
-$MSG_Runtime_Error="人品问题-愚人节快乐";
-$MSG_Compile_Error="人品问题-愚人节快乐";
-$MSG_Compile_OK="人品问题-愚人节快乐";
-}
+	if(date('m')==4&&date('d')==1&&rand(0,100)<10){
+		$MSG_Accepted="人品问题-愚人节快乐";
+		$MSG_Presentation_Error="人品问题-愚人节快乐";
+		$MSG_Wrong_Answer="人品问题-愚人节快乐";
+		$MSG_Time_Limit_Exceed="人品问题-愚人节快乐";
+		$MSG_Memory_Limit_Exceed="人品问题-愚人节快乐";
+		$MSG_Output_Limit_Exceed="人品问题-愚人节快乐";
+		$MSG_Runtime_Error="人品问题-愚人节快乐";
+		$MSG_Compile_Error="人品问题-愚人节快乐";
+		$MSG_Compile_OK="人品问题-愚人节快乐";
+	}
     $MSG_TEST_RUN="运行完成";
 	$MSG_TR="测试运行";
 
@@ -122,19 +122,19 @@ $MSG_Compile_OK="人品问题-愚人节快乐";
 	$MSG_EXPORT="导出";
 	$MSG_UPDATE_DATABASE="更新数据库";
 	$MSG_ONLINE="在线";
-  //contest
-  $MSG_PRIVATE_WARNING="私有比赛或考试作业，您无权查看题目。";
-  $MSG_WATCH_RANK="点击这里查看做题排名。";
-  $MSG_Public="公开";
-  $MSG_Private="私有";
-  $MSG_Running="运行中";
-  $MSG_Start="开始于";
-  $MSG_TotalTime="总赛时";
-  $MSG_LeftTime="剩余";
-  $MSG_Ended="已结束";
-  $MSG_Login="请登录后继续操作";
-  $MSG_JUDGER="判题机";
-  $MSG_SOURCE_NOT_ALLOWED_FOR_EXAM="考试期间，不能查阅以前提交的代码。";
-  $MSG_BBS_NOT_ALLOWED_FOR_EXAM="考试期间,讨论版禁用。";
-  $MSG_MAIL_NOT_ALLOWED_FOR_EXAM="考试期间,内邮禁用。";
+  	//contest
+  	$MSG_PRIVATE_WARNING="私有比赛或考试作业，您无权查看题目。";
+  	$MSG_WATCH_RANK="点击这里查看做题排名。";
+  	$MSG_Public="公开";
+  	$MSG_Private="私有";
+  	$MSG_Running="运行中";
+  	$MSG_Start="开始于";
+  	$MSG_TotalTime="总赛时";
+  	$MSG_LeftTime="剩余";
+  	$MSG_Ended="已结束";
+  	$MSG_Login="请登录后继续操作";
+  	$MSG_JUDGER="判题机";
+  	$MSG_SOURCE_NOT_ALLOWED_FOR_EXAM="考试期间，不能查阅以前提交的代码。";
+  	$MSG_BBS_NOT_ALLOWED_FOR_EXAM="考试期间,讨论版禁用。";
+  	$MSG_MAIL_NOT_ALLOWED_FOR_EXAM="考试期间,内邮禁用。";
 ?>

@@ -6,10 +6,16 @@
     require_once('./include/db_info.inc.php');
 	require_once('./include/setlang.php');
 	$view_title= "JMU Online Judge";
+//  echo $_SERVER['HTTP_HOST'];
 	
 ///////////////////////////MAIN	
 	
 	$view_news="";
+
+	$view_news.= "<table width=96%>";
+	$view_news.= "<tr><td width=20%><td>This <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> OnlineJudge is a GPL product from <a href=https://github.com/zhblue/hustoj>hustoj</a></tr>";
+	$view_news.= "</table>";
+	/*
 	$sql=	"SELECT * "
 			."FROM `news` "
 			."WHERE `defunct`!='Y'"
@@ -21,7 +27,6 @@
 		$view_news.= mysql_error();
 	}else{
 		$view_news.= "<table width=96%>";
-		
 		while ($row=mysqli_fetch_object($result)){
 			$view_news.= "<tr><td><td><big><b>".$row->title."</b></big>-<small>[".$row->user_id."]</small></tr>";
 			$view_news.= "<tr><td><td>".$row->content."</tr>";
@@ -30,6 +35,7 @@
 		$view_news.= "<tr><td width=20%><td>This <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> OnlineJudge is a GPL product from <a href=https://github.com/zhblue/hustoj>hustoj</a></tr>";
 		$view_news.= "</table>";
 	}
+	*/
 	$view_apc_info="";
 
 	$sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution`  group by md order by md desc ";
