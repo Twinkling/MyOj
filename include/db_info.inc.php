@@ -1,7 +1,7 @@
 <?php @session_start();
 	ini_set("display_errors","Off");
 static 	$DB_HOST="localhost"; // 数据库的服务器地址
-static 	$DB_NAME="jmu"; // 数据库名
+static 	$DB_NAME="jol"; // 数据库名
 static 	$DB_USER="root"; // 数据库用户名
 static 	$DB_PASS="TwinklingZ"; // 数据库密码
 	// connect db 
@@ -10,17 +10,17 @@ static 	$OJ_HOME="./"; // OJ的首页地址
         $OJ_SERVE_ADD="http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/MyOj"; // OJ服务器地址
 static 	$OJ_ADMIN="root@localhost"; // 管理员email
 static 	$OJ_DATA="/home/judge/data"; // 测试数据所在目录，实际位置。
-static 	$OJ_BBS="discuss3"; //"bbs" 论坛的形式，discuss为自带的简单论坛，bbs为外挂论坛，参考bbs.php代码。
-static  $OJ_ONLINE=false; // 是否使用在线监控，需要消耗一定的内存和计算，因此如果并发大建议关闭
-static  $OJ_LANG="cn"; // 默认的语言，中文为cn
-static  $OJ_SIM=false; // 是否显示相似度检测的结果。
-static  $OJ_DICT=false; // 是否启用在线英字典
+// static 	$OJ_BBS="discuss3"; //"bbs" 论坛的形式，discuss为自带的简单论坛，bbs为外挂论坛，参考bbs.php代码。
+// static  $OJ_ONLINE=false; // 是否使用在线监控，需要消耗一定的内存和计算，因此如果并发大建议关闭
+static  $OJ_LANG="en"; // 默认的语言，中文为cn，英文为en
+// static  $OJ_SIM=false; // 是否显示相似度检测的结果。
+// static  $OJ_DICT=false; // 是否启用在线英字典
 static  $OJ_LANGMASK=0; //1mC 2mCPP 4mPascal 8mJava 16mRuby 32mBash 1008 for security reason to mask all other language 用掩码表示的OJ接受的提交语言，可以被比赛设定覆盖。
 static  $OJ_EDITE_AREA=true;//true: syntax highlighting is active  是否启用高亮语法显示的提交界面，可以在线编程，无须IDE。
 static  $OJ_AUTO_SHARE=false; // true: 自动分享代码，启用的话，做出一道题就可以在该题的Status中看其他人的答案。
 static  $OJ_CSS="hoj.css"; // 默认的css,可以选择dark.css和gcode.css,具有有限的界面制定效果。
-static  $OJ_SAE=false; // 是否是在新浪的云平台运行web部分
-static  $OJ_VCODE=false; // 是否启用图形登录、注册验证码。
+// static  $OJ_SAE=false; // 是否是在新浪的云平台运行web部分
+static  $OJ_VCODE=true; // 是否启用图形登录、注册验证码。
 static  $OJ_APPENDCODE=false; // 是否启用自动添加代码，启用的话，提交时会参考$OJ_DATA对应目录里是否有append.c一类的文件，有的话会把其中代码附加到对应语言的答案之后，巧妙使用可以指定main函数而要求学生编写main部分调用的函数。
 static  $OJ_MEMCACHE=false; // 是否使用memcache作为页面缓存，如果不启用则用/cache目录
 static  $OJ_MEMSERVER="127.0.0.1"; // memcached的服务器地址
@@ -55,12 +55,13 @@ static  $OJ_QQ_CBURL='192.168.0.108';
 //if(date('H')<5||date('H')>21||isset($_GET['dark'])) $OJ_CSS="dark.css";
 if (isset($_SESSION['OJ_LANG'])) $OJ_LANG=$_SESSION['OJ_LANG'];
 global $mysqli;
-	if($OJ_SAE)	{
-		$OJ_DATA="saestor://data/";
-	//  for sae.sina.com.cn
-		$mysqli=mysqli_connect(SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
-		$DB_NAME=SAE_MYSQL_DB;
-	}else{
+//	if($OJ_SAE)	{
+//		$OJ_DATA="saestor://data/";
+//	//  for sae.sina.com.cn
+//		$mysqli=mysqli_connect(SAE_MYSQL_HOST_M.':'.SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
+//		$DB_NAME=SAE_MYSQL_DB;
+//	}else
+	{
 		//for normal install
 		if(($mysqli=mysqli_connect($DB_HOST,$DB_USER,$DB_PASS))==null) 
 			die('Could not connect: ' . mysqli_error());

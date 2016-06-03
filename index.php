@@ -5,17 +5,11 @@
 	require_once('./include/cache_start.php');
     require_once('./include/db_info.inc.php');
 	require_once('./include/setlang.php');
-	$view_title= "JMU Online Judge";
-//  echo $_SERVER['HTTP_HOST'];
+	$view_title= "Welcome To Online Judge";
 	
 ///////////////////////////MAIN	
 	
 	$view_news="";
-
-	$view_news.= "<table width=96%>";
-	$view_news.= "<tr><td width=20%><td>This <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> OnlineJudge is a GPL product from <a href=https://github.com/zhblue/hustoj>hustoj</a></tr>";
-	$view_news.= "</table>";
-	/*
 	$sql=	"SELECT * "
 			."FROM `news` "
 			."WHERE `defunct`!='Y'"
@@ -26,43 +20,46 @@
 		$view_news= "<h3>No News Now!</h3>";
 		$view_news.= mysql_error();
 	}else{
-		$view_news.= "<table width=96%>";
+		$view_news.="<div style='width: 96%;padding-left: 20%'>";
+		
 		while ($row=mysqli_fetch_object($result)){
-			$view_news.= "<tr><td><td><big><b>".$row->title."</b></big>-<small>[".$row->user_id."]</small></tr>";
-			$view_news.= "<tr><td><td>".$row->content."</tr>";
+			$view_news.="<div><strong style='font-size: 20px;'>".$row->title."</strong>&nbsp;--&nbsp;<small>[".$row->user_id."]</small></div>";
+			$view_news.="<p style='margin: 10px auto;font-size: 14px;'>".$row->content."</p>";
 		}
 		mysqli_free_result($result);
-		$view_news.= "<tr><td width=20%><td>This <a href=http://cm.baylor.edu/welcome.icpc>ACM/ICPC</a> OnlineJudge is a GPL product from <a href=https://github.com/zhblue/hustoj>hustoj</a></tr>";
-		$view_news.= "</table>";
+		$view_news.="</div>";
 	}
-	*/
-	$view_apc_info="";
+$view_apc_info="";
 
-	$sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution`  group by md order by md desc ";
-		$result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
-		$chart_data_all= array();
-	//echo $sql;
+$sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution`  group by md order by md desc ";
+	$result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
+	$chart_data_all= array();
+//echo $sql;
+    
+	while ($row=mysqli_fetch_array($result)){
+		$chart_data_all[$row['md']]=$row['c'];
+    }
+    
+$sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution` where result=4 group by md order by md desc ";
+	$result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
+	$chart_data_ac= array();
+//echo $sql;
+    
+	while ($row=mysqli_fetch_array($result)){
+		$chart_data_ac[$row['md']]=$row['c'];
+    }
+    
+	
 
-		while ($row=mysqli_fetch_array($result)){
-			$chart_data_all[$row['md']]=$row['c'];
-		}
 
-	$sql=	"SELECT UNIX_TIMESTAMP(date(in_date))*1000 md,count(1) c FROM `solution` where result=4 group by md order by md desc ";
-		$result=mysqli_query($mysqli,$sql);//mysql_escape_string($sql));
-		$chart_data_ac= array();
-	//echo $sql;
+if(function_exists('apc_cache_info')){
+	 $_apc_cache_info = apc_cache_info(); 
+		$view_apc_info =_apc_cache_info;
+}
 
-		while ($row=mysqli_fetch_array($result)){
-			$chart_data_ac[$row['md']]=$row['c'];
-		}
-	if(function_exists('apc_cache_info')){
-		 $_apc_cache_info = apc_cache_info();
-			$view_apc_info =_apc_cache_info;
-	}
-
-	/////////////////////////Template
-	require("template/".$OJ_TEMPLATE."/index.php");
-	/////////////////////////Common foot
-	if(file_exists('./include/cache_end.php'))
-		require_once('./include/cache_end.php');
+/////////////////////////Template
+require("template/".$OJ_TEMPLATE."/index.php");
+/////////////////////////Common foot
+if(file_exists('./include/cache_end.php'))
+	require_once('./include/cache_end.php');
 ?>

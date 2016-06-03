@@ -9,7 +9,12 @@
     <link rel="shortcut icon" <?php echo "href=\"".$OJ_SERVE_ADD."/favicon.ico\""?> type="image/x-icon">
 
     <title><?php echo $OJ_NAME?></title>  
-    <?php include("template/$OJ_TEMPLATE/css.php");?>	    
+    <?php include("template/$OJ_TEMPLATE/css.php");
+//    echo dirname(__FILE__);
+      if(isset($OJ_LANG)){
+        require_once("lang/$OJ_LANG.php");
+      }
+    ?>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -28,27 +33,27 @@
 	<form action="modify.php" method="post">
 <br><br>
 <center><table>
-<tr><td colspan=2 height=40 width=500>&nbsp;&nbsp;&nbsp;Update Information</tr>
-<tr><td width=25%>User ID:
+<tr><td colspan=2 height=40 width=500><?php echo $MSG_UPDATE?></tr>
+<tr><td width=25%><?php echo $MSG_USER."ID:"?>
 <td width=75%><?php echo $_SESSION['user_id']?>
 <?php require_once('./include/set_post_key.php');?>
 </tr>
-<tr><td>Nick Name:
+<tr><td><?php echo $MSG_NICK.":"?>
 <td><input name="nick" size=50 type=text value="<?php echo htmlentities($row->nick,ENT_QUOTES,"UTF-8")?>" >
 </tr>
-<tr><td>Old Password:
+<tr><td><?php echo $MSG_OLD.$MSG_PASSWORD.":"?>
 <td><input name="opassword" size=20 type=password>
 </tr>
-<tr><td>New Password:
+<tr><td><?php echo $MSG_NEW.$MSG_PASSWORD.":"?>
 <td><input name="npassword" size=20 type=password>
 </tr>
-<tr><td>Repeat New Password::
+<tr><td><?PHP ECHO $MSG_REPEAT_PASSWORD.":"?>
 <td><input name="rptpassword" size=20 type=password>
 </tr>
-<tr><td>School:
+<tr><td><?PHP ECHO $MSG_SCHOOL.":"?>
 <td><input name="school" size=30 type=text value="<?php echo htmlentities($row->school,ENT_QUOTES,"UTF-8")?>" >
 </tr>
-<tr><td>Email:
+<tr><td><?PHP ECHO $MSG_EMAIL.":"?>
 <td><input name="email" size=30 type=text value="<?php echo htmlentities($row->email,ENT_QUOTES,"UTF-8")?>" >
 </tr>
 <tr><td>

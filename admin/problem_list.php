@@ -28,8 +28,8 @@ if (isset($_GET['page'])){
 $pstart=1000+$page_cnt*intval($page-1);
 $pend=$pstart+$page_cnt;
 
-echo "<title>Problem List</title>";
-echo "<center><h2>Problem List</h2></center>";
+//echo "<title>$MSG_P</title>";
+echo "<center><h2>$MSG_PROBLEM$MSG_LIST</h2></center>";
 
 echo "<form action=problem_list.php>";
 echo "<select class='input-mini' onchange=\"location.href='problem_list.php?page='+this.value;\">";
@@ -52,11 +52,11 @@ $result=mysqli_query($mysqli,$sql) or die(mysql_error());
 <?php
 echo "<center><table class='table table-striped' width=90% border=1>";
 echo "<form method=post action=contest_add.php>";
-echo "<tr><td colspan=7><input type=submit name='problem2contest' value='CheckToNewContest'>";
-echo "<tr><td>PID<td>Title<td>Date";
+echo "<tr><td colspan=7><input type=submit name='problem2contest' value='$MSG_CHECK_OUT_CONTENT'>";
+echo "<tr><td>PID<td>$MSG_TITLE<td>$MSG_DATE";
 if(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor'])){
-        if(isset($_SESSION['administrator']))   echo "<td>Status<td>Delete";
-        echo "<td>Edit<td>TestData</tr>";
+        if(isset($_SESSION['administrator']))   echo "<td>$MSG_STATUS<td>$MSG_DELETE";
+        echo "<td>$MSG_EDIT<td>$MSG_TESTDATA</tr>";
 }
 for (;$row=mysqli_fetch_object($result);){
         echo "<tr>";
@@ -71,18 +71,18 @@ for (;$row=mysqli_fetch_object($result);){
                         if($OJ_SAE||function_exists("system")){
                               ?>
                               <a href=# onclick='javascript:if(confirm("Delete?")) location.href="problem_del.php?id=<?php echo $row->problem_id?>&getkey=<?php echo $_SESSION['getkey']?>";'>
-                              Delete</a>
+                              <?PHP ECHO $MSG_DELETE?></a>
                               <?php
                         }
                 }
                 if(isset($_SESSION['administrator'])||isset($_SESSION["p".$row->problem_id])){
-                        echo "<td><a href=problem_edit.php?id=$row->problem_id&getkey=".$_SESSION['getkey'].">Edit</a>";
-                        echo "<td><a href=quixplorer/index.php?action=list&dir=$row->problem_id&order=name&srt=yes>TestData</a>";
+                        echo "<td><a href=problem_edit.php?id=$row->problem_id&getkey=".$_SESSION['getkey'].">$MSG_EDIT</a>";
+                        echo "<td><a href=quixplorer/index.php?action=list&dir=$row->problem_id&order=name&srt=yes>$MSG_TESTDATA</a>";
                 }
         }
         echo "</tr>";
 }
-echo "<tr><td colspan=7><input type=submit name='problem2contest' value='CheckToNewContest'>";
+echo "<tr><td colspan=7><input type=submit name='problem2contest' value='$MSG_CHECK_OUT_CONTENT'>";
 echo "</tr></form>";
 echo "</table></center>";
 require("../oj-footer.php");

@@ -3,6 +3,9 @@
 	echo "<a href='../loginpage.php'>Please Login First!</a>";
 	exit(1);
 }
+if(isset($OJ_LANG)){
+	require_once("../lang/$OJ_LANG.php");
+}
 if(isset($_POST['do'])){
 	require_once("../include/check_post_key.php");
 	$user_id=mysqli_real_escape_string($mysqli,$_POST['user_id']);
@@ -15,12 +18,16 @@ if(isset($_POST['do'])){
 ?>
 <form method=post>
 <?php require("../include/set_post_key.php");?>
-	<b>Add privilege for User:</b><br />
-	User:<input type=text size=10 name="user_id"><br />
-	Privilege:
+	<b><?php if($OJ_LANG === 'cn'){
+			echo $MSG_ADD.$MSG_USER.$MSG_PRIVILEGE;
+		}else{
+			echo $MSG_ADD." ".$MSG_PRIVILEGE." for ".$MSG_USER;
+		}?></b><br />
+	<?php echo $MSG_USER.":" ?><input type=text size=10 name="user_id"><br />
+	<?php echo $MSG_PRIVILEGE.":" ?>
 	<select name="rightstr">
 <?php
-$rightarray=array("administrator","problem_editor","source_browser","contest_creator","http_judge","password_setter" );
+$rightarray=array("administrator","problem_editor","contest_creator");
 while(list($key, $val)=each($rightarray)) {
 	if (isset($rightstr) && ($rightstr == $val)) {
 		echo '<option value="'.$val.'" selected>'.$val.'</option>';
@@ -30,13 +37,17 @@ while(list($key, $val)=each($rightarray)) {
 }
 ?></select><br />
 	<input type='hidden' name='do' value='do'>
-	<input type=submit value='Add'>
+	<input type=submit value='<?php echo $MSG_ADD?>'>
 </form>
 <form method=post>
-	<b>Add contest for User:</b><br />
-	User:<input type=text size=10 name="user_id"><br />
-	Contest:<input type=text size=10 name="rightstr">c1000 for Contest1000<br />
+	<b><?php if($OJ_LANG === 'cn'){
+			echo $MSG_ADD.$MSG_USER.$MSG_CONTEST;
+		}else{
+			echo $MSG_ADD." ".$MSG_CONTEST." for ".$MSG_USER;
+		}?></b><br />
+	<?php echo $MSG_USER.":" ?><input type=text size=10 name="user_id"><br />
+	<?php echo $MSG_CONTEST.":" ?><input type=text size=10 name="rightstr">c1000 for Contest1000<br />
 	<input type='hidden' name='do' value='do'>
-	<input type=submit value='Add'>
+	<input type=submit value='<?php echo $MSG_ADD?>'>
 	<input type=hidden name="postkey" value="<?php echo $_SESSION['postkey']?>">
 </form>

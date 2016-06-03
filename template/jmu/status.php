@@ -115,17 +115,17 @@ echo "<input type=submit class='form-control' value='$MSG_SEARCH'></form>";
 <?php
 $cnt=0;
 foreach($view_status as $row){
-if ($cnt)
-echo "<tr class='oddrow'>";
-else
-echo "<tr class='evenrow'>";
-foreach($row as $table_cell){
-echo "<td>";
-echo "\t".$table_cell;
-echo "</td>";
-}
-echo "</tr>";
-$cnt=1-$cnt;
+    if ($cnt)
+        echo "<tr class='oddrow'>";
+    else
+        echo "<tr class='evenrow'>";
+    foreach($row as $table_cell){
+        echo "<td>";
+        echo "\t".$table_cell;
+        echo "</td>";
+    }
+    echo "</tr>";
+    $cnt=1-$cnt;
 }
 ?>
 </tbody>

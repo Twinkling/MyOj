@@ -3,10 +3,13 @@ if (!(isset($_SESSION['administrator']))){
 	echo "<a href='../loginpage.php'>Please Login First!</a>";
 	exit(1);
 }
+if(isset($OJ_LANG)){
+	require_once("../lang/$OJ_LANG.php");
+}
 ?>
 
 <form action='problem_export_xml.php' method=post>
-	<b>Export Problem:</b><br />
+	<b><?PHP ECHO $MSG_EXPORT.$MSG_PROBLEM?></b><br />
 	from pid:<input type=text size=10 name="start" value=1000>
 	to pid:<input type=text size=10 name="end" value=1000><br />
 	or in<input type=text size=40 name="in" value=""><br />

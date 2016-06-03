@@ -31,6 +31,9 @@
           </center>
           </p>
           <?php echo $view_news?>
+          <div id="foot" style="text-align: center;">
+              <?php require_once("OJ-footer.php");?>
+          </div>
       </div>
 
     </div> <!-- /container -->

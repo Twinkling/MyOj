@@ -14,44 +14,47 @@ if (!(isset($_SESSION['administrator'])||isset($_SESSION['problem_editor']))){
 	echo "<a href='../loginpage.php'>Please Login First!</a>";
 	exit(1);
 }
+if(isset($OJ_LANG)){
+	require_once("../lang/$OJ_LANG.php");
+}
 ?>
 <?php
 include_once("kindeditor.php") ;
 ?>
-<h1 >Add New problem</h1>
+<h1 ><?php echo $MSG_ADD.$MSG_PROBLEM?></h1>
 
 <form method=POST action=problem_add.php>
 <input type=hidden name=problem_id value="New Problem">
-<p align=left>Problem Id:&nbsp;&nbsp;New Problem</p>
-<p align=left>Title:<input class="input input-xxlarge" type=text name=title size=71></p>
-<p align=left>Time Limit:<input type=text name=time_limit size=20 value=1>S</p>
-<p align=left>Memory Limit:<input type=text name=memory_limit size=20 value=128>MByte</p>
-<p align=left>Description:<br>
+<!--<p align=left>Problem Id:&nbsp;&nbsp;New Problem</p>-->
+<p align=left><?php echo $MSG_TITLE.":"?><input class="input input-xxlarge" type=text name=title size=71></p>
+<p align=left><?PHP echo $MSG_Time_Limit.":"?><input type=text name=time_limit size=20 value=1>S</p>
+<p align=left><?PHP echo $MSG_Memory_Limit.":"?><input type=text name=memory_limit size=20 value=128>MByte</p>
+<p align=left><?PHP ECHO $MSG_Description.":"?><br>
 <textarea class="kindeditor" rows=13 name=description cols=80></textarea>
 
 </p>
 
-<p align=left>Input:<br>
+<p align=left><?php echo $MSG_Input.":"?><br>
 <textarea  class="kindeditor" rows=13 name=input cols=80></textarea>
 
 </p>
 
 </p>
-<p align=left>Output:<br>
+<p align=left><?php echo $MSG_Output.":"?><br>
 <textarea  class="kindeditor" rows=13 name=output cols=80></textarea>
 
 
 
 </p>
-<p align=left>Sample Input:<br><textarea  class="input input-xxlarge"  rows=13 name=sample_input cols=80></textarea></p>
-<p align=left>Sample Output:<br><textarea  class="input input-xxlarge"  rows=13 name=sample_output cols=80></textarea></p>
-<p align=left>Test Input:<br><textarea  class="input input-xxlarge" rows=13 name=test_input cols=80></textarea></p>
-<p align=left>Test Output:<br><textarea  class="input input-xxlarge"  rows=13 name=test_output cols=80></textarea></p>
-<p align=left>Hint:<br>
+<p align=left><?php echo $MSG_Sample_Input.":"?><br><textarea  class="input input-xxlarge"  rows=13 name=sample_input cols=80></textarea></p>
+<p align=left><?php echo $MSG_Sample_Output.":"?><br><textarea  class="input input-xxlarge"  rows=13 name=sample_output cols=80></textarea></p>
+<p align=left><?php echo $MSG_TEST_INPUT.":"?><br><textarea  class="input input-xxlarge" rows=13 name=test_input cols=80></textarea></p>
+<p align=left><?php echo $MSG_TEST_OUTPUT.":"?><br><textarea  class="input input-xxlarge"  rows=13 name=test_output cols=80></textarea></p>
+<p align=left><?php echo $MSG_HINT.":"?><br>
 <textarea class="kindeditor" rows=13 name=hint cols=80></textarea>
 </p>
 <p>SpecialJudge: N<input type=radio name=spj value='0' checked>Y<input type=radio name=spj value='1'></p>
-<p align=left>Source:<br><textarea name=source rows=1 cols=70></textarea></p>
+<p align=left><?php echo $MSG_Source.":"?><br><textarea name=source rows=1 cols=70></textarea></p>
 <p align=left>contest:
 	<select  name=contest_id>
 <?php $sql="SELECT `contest_id`,`title` FROM `contest` WHERE `start_time`>NOW() order by `contest_id`";

@@ -5,8 +5,8 @@
         }
 
 
-echo "<title>Problem List</title>";
-echo "<center><h2>Contest List</h2></center>";
+//echo "<title>$MSG_</title>";
+echo "<center><h2>$MSG_CONTEST$MSG_LIST</h2></center>";
 require_once("../include/set_get_key.php");
 $sql="SELECT max(`contest_id`) as upid, min(`contest_id`) as btid  FROM `contest`";
 $page_cnt=50;
@@ -37,7 +37,7 @@ $result=mysqli_query($mysqli,$sql) or die(mysql_error());
 
 <?php
 echo "<center><table class='table table-striped' width=90% border=1>";
-echo "<tr><td>ContestID<td>Title<td>StartTime<td>EndTime<td>Private<td>Status<td>Edit<td>Copy<td>Export<td>Logs";
+echo "<tr><td>$MSG_CONTEST"."ID<td>$MSG_TITLE<td>$MSG_DATE_ARRAY[StartTime]<td>$MSG_DATE_ARRAY[EndTime]<td>$MSG_Public/$MSG_Private<td>$MSG_STATUS<td>$MSG_EDIT<td>$MSG_COPY<td>$MSG_EXPORT<td>$MSG_LOGS";
 echo "</tr>";
 for (;$row=mysqli_fetch_object($result);){
         echo "<tr>";
@@ -49,16 +49,16 @@ for (;$row=mysqli_fetch_object($result);){
         if(isset($_SESSION['administrator'])||isset($_SESSION["m$cid"])){
                 echo "<td><a href=contest_pr_change.php?cid=$row->contest_id&getkey=".$_SESSION['getkey'].">".($row->private=="0"?"<span class=green>Public</span>":"<span class=red>Private<span>")."</a>";
                 echo "<td><a href=contest_df_change.php?cid=$row->contest_id&getkey=".$_SESSION['getkey'].">".($row->defunct=="N"?"<span class=green>Available</span>":"<span class=red>Reserved</span>")."</a>";
-                echo "<td><a href=contest_edit.php?cid=$row->contest_id>Edit</a>";
-                echo "<td><a href=contest_add.php?cid=$row->contest_id>Copy</a>";
+                echo "<td><a href=contest_edit.php?cid=$row->contest_id>$MSG_EDIT</a>";
+                echo "<td><a href=contest_add.php?cid=$row->contest_id>$MSG_COPY</a>";
                 if(isset($_SESSION['administrator'])){
-                        echo "<td><a href=\"problem_export_xml.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">Export</a>";
+                        echo "<td><a href=\"problem_export_xml.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">$MSG_EXPORT</a>";
                 }else{
                   echo "<td>";
                 }
-     echo "<td> <a href=\"../export_contest_code.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">Logs</a>";
+     echo "<td> <a href=\"../export_contest_code.php?cid=$row->contest_id&getkey=".$_SESSION['getkey']."\">$MSG_LOGS</a>";
         }else{
-                echo "<td colspan=5 align=right><a href=contest_add.php?cid=$row->contest_id>Copy</a><td>";
+                echo "<td colspan=5 align=right><a href=contest_add.php?cid=$row->contest_id>$MSG_COPY</a><td>";
 
         }
 

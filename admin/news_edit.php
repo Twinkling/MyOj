@@ -4,6 +4,9 @@ if (!(isset($_SESSION['administrator']))){
 	echo "<a href='../loginpage.php'>Please Login First!</a>";
 	exit(1);
 }
+if(isset($OJ_LANG)){
+	require_once("../lang/$OJ_LANG.php");
+}
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>News Edit</title>
@@ -12,17 +15,17 @@ if (!(isset($_SESSION['administrator']))){
 if (isset($_POST['news_id']))
 {
 	require_once("../include/check_post_key.php");
-$title = $_POST ['title'];
-$content = $_POST ['content'];
-$user_id=$_SESSION['user_id'];
-$news_id=intval($_POST['news_id']);
-if (get_magic_quotes_gpc ()) {
-	$title = stripslashes ( $title);
-	$content = stripslashes ( $content );
-}
-$title=mysqli_real_escape_string($mysqli,$title);
-$content=mysqli_real_escape_string($mysqli,$content);
-$user_id=mysqli_real_escape_string($mysqli,$user_id);
+	$title = $_POST ['title'];
+	$content = $_POST ['content'];
+	$user_id=$_SESSION['user_id'];
+	$news_id=intval($_POST['news_id']);
+	if (get_magic_quotes_gpc ()) {
+		$title = stripslashes ( $title);
+		$content = stripslashes ( $content );
+	}
+	$title=mysqli_real_escape_string($mysqli,$title);
+	$content=mysqli_real_escape_string($mysqli,$content);
+	$user_id=mysqli_real_escape_string($mysqli,$user_id);
 
 	$sql="UPDATE `news` set `title`='$title',`time`=now(),`content`='$content',user_id='$user_id' WHERE `news_id`=$news_id";
 	//echo $sql;
@@ -42,8 +45,7 @@ $user_id=mysqli_real_escape_string($mysqli,$user_id);
 		echo "No such Contest!";
 		exit(0);
 	}
-	$row=mysql_fetch_assoc($result);
-	
+	$row=$result->fetch_assoc();
 	$title=htmlentities($row['title'],ENT_QUOTES,"UTF-8");
 	$content=$row['content'];
 	mysqli_free_result($result);
@@ -52,11 +54,11 @@ $user_id=mysqli_real_escape_string($mysqli,$user_id);
 ?>
 <?php include("kindeditor.php")?>
 <form method=POST action='news_edit.php'>
-<p align=center><font size=4 color=#333399>Edit a Contest</font></p>
+<p align=center><font size=4 color=#333399><?php echo $MSG_EDIT.$MSG_CONTEST?></font></p>
 <input type=hidden name='news_id' value=<?php echo $news_id?>>
-<p align=left>Title:<input type=text name=title size=71 value='<?php echo $title?>'></p>
+<p align=left><?php echo $MSG_TITLE.":"?><input type=text name=title size=71 value='<?php echo $title?>'></p>
 
-<p align=left>Content:<br>
+<p align=left><?php echo $MSG_CONTENT.":"?><br>
 <textarea class=kindeditor name=content ><?php echo htmlentities($content,ENT_QUOTES,"UTF-8")?></textarea>
 </p>
 <?php require_once("../include/set_post_key.php");?>

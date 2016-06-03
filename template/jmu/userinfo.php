@@ -66,9 +66,6 @@ backgroundColor: { colors: ["#fff", "#333"] }
 <table class="table table-striped" id=statics width=70%>
 <caption>
 <?php echo $user."--".htmlentities($nick,ENT_QUOTES,"UTF-8")?>
-<?php
-echo "<a href=mail.php?to_user=$user>$MSG_MAIL</a>";
-?>
 </caption>
 <tr ><td width=15%><?php echo $MSG_Number?><td width=25% align=center><?php echo $Rank?><td width=70% align=center>Solved Problems List</tr>
 <tr ><td><?php echo $MSG_SOVLED?><td align=center><a href='status.php?user_id=<?php echo $user?>&jresult=4'><?php echo $AC?></a>

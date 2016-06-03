@@ -3,6 +3,9 @@ if (!(isset($_SESSION['administrator']))){
 	echo "<a href='../loginpage.php'>Please Login First!</a>";
 	exit(1);
 }
+if(isset($OJ_LANG)){
+	require_once("../lang/$OJ_LANG.php");
+}
 if(isset($_POST['do'])){
 	require_once("../include/check_post_key.php");
 	$filename = $OJ_SAE?"saestor://web/msg.txt":"msg.txt";
@@ -16,7 +19,7 @@ if(isset($_POST['do'])){
 $msg=file_get_contents($OJ_SAE?"saestor://web/msg.txt":"msg.txt");
 
 ?>
-	<b>Set Message</b>
+	<b><?PHP ECHO $MSG_SETMESSAGE ?></b>
 	<form action='setmsg.php' method='post'>
 		<textarea name='msg' rows=25 class="input input-xxlarge" ><?php echo $msg?></textarea><br>
 		<input type='hidden' name='do' value='do'>

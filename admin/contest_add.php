@@ -1,10 +1,13 @@
 <?php require_once("admin-header.php");?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Add a contest</title>
+<!--<title>Add a contest</title>-->
 
 <?php
 	require_once("../include/db_info.inc.php");
 	require_once("../include/const.inc.php");
+if(isset($OJ_LANG)){
+	require_once("../lang/$OJ_LANG.php");
+}
 
 $description="";
  if (isset($_POST['syear']))
@@ -47,7 +50,7 @@ $langmask=((1<<count($language_ext))-1)&(~$langmask);
 	echo $sql;
 	mysqli_query($mysqli,$sql) or die(mysql_error());
 	$cid=mysqli_insert_id($mysqli);
-	echo "Add Contest ".$cid;
+	echo "$MSG_ADD $MSG_CONTEST ".$cid;
 	$sql="DELETE FROM `contest_problem` WHERE `contest_id`=$cid";
 	$plist=trim($_POST['cproblem']);
 	$pieces = explode(",",$plist );
@@ -125,24 +128,24 @@ else if(isset($_POST['problem2contest'])){
 ?>
 	
 	<form method=POST >
-	<p align=center><font size=4 color=#333399>Add a Contest</font></p>
-	<p align=left>Title:<input class=input-xxlarge  type=text name=title size=71 value="<?php echo isset($title)?$title:""?>"></p>
-	<p align=left>Start Time:<br>&nbsp;&nbsp;&nbsp;
-	Year:<input  class=input-mini type=text name=syear value=<?php echo date('Y')?> size=4 >
-	Month:<input class=input-mini  type=text name=smonth value=<?php echo date('m')?> size=2 >
-	Day:<input class=input-mini type=text name=sday size=2 value=<?php echo date('d')?> >&nbsp;
-	Hour:<input class=input-mini    type=text name=shour size=2 value=<?php echo date('H')?>>&nbsp;
-	Minute:<input class=input-mini    type=text name=sminute value=00 size=2 ></p>
-	<p align=left>End Time:<br>&nbsp;&nbsp;&nbsp;
-	Year:<input class=input-mini    type=text name=eyear value=<?php echo date('Y')?> size=4 >
-	Month:<input class=input-mini    type=text name=emonth value=<?php echo date('m')?> size=2 >
-	
-	Day:<input class=input-mini  type=text name=eday size=2 value=<?php echo date('d')+(date('H')+4>23?1:0)?>>&nbsp;
-	Hour:<input class=input-mini  type=text name=ehour size=2 value=<?php echo (date('H')+4)%24?>>&nbsp;
-	Minute:<input class=input-mini  type=text name=eminute value=00 size=2 ></p>
-	Public:<select name=private><option value=0>Public</option><option value=1>Private</option></select>
-	Password:<input type=text name=password value="">
-	Language:<select name="lang[]" multiple="multiple"    style="height:220px">
+	<p align=center><font size=4 color=#333399><?PHP ECHO $MSG_ADD.$MSG_CONTEST?></font></p>
+	<p align=left><?PHP ECHO $MSG_TITLE.":"?><input class=input-xxlarge  type=text name=title size=71 value="<?php echo isset($title)?$title:""?>"></p>
+	<p align=left><?php echo $MSG_DATE_ARRAY["StartTime"].":"?><br>&nbsp;&nbsp;&nbsp;
+		<?php echo $MSG_DATE_ARRAY["Year"].":"?><input  class=input-mini type=text name=syear value=<?php echo date('Y')?> size=4 >
+		<?php echo $MSG_DATE_ARRAY["Month"].":"?><input class=input-mini  type=text name=smonth value=<?php echo date('m')?> size=2 >
+		<?php echo $MSG_DATE_ARRAY["Day"].":"?><input class=input-mini type=text name=sday size=2 value=<?php echo date('d')?> >&nbsp;
+		<?php echo $MSG_DATE_ARRAY["Hour"].":"?><input class=input-mini    type=text name=shour size=2 value=<?php echo date('H')?>>&nbsp;
+		<?php echo $MSG_DATE_ARRAY["Minute"].":"?><input class=input-mini    type=text name=sminute value=00 size=2 ></p>
+	<p align=left><?php echo $MSG_DATE_ARRAY["EndTime"].":"?><br>&nbsp;&nbsp;&nbsp;
+		<?php echo $MSG_DATE_ARRAY["Year"].":"?><input class=input-mini    type=text name=eyear value=<?php echo date('Y')?> size=4 >
+		<?php echo $MSG_DATE_ARRAY["Month"].":"?><input class=input-mini    type=text name=emonth value=<?php echo date('m')?> size=2 >
+
+		<?php echo $MSG_DATE_ARRAY["Day"].":"?><input class=input-mini  type=text name=eday size=2 value=<?php echo date('d')+(date('H')+4>23?1:0)?>>&nbsp;
+		<?php echo $MSG_DATE_ARRAY["Hour"].":"?><input class=input-mini  type=text name=ehour size=2 value=<?php echo (date('H')+4)%24?>>&nbsp;
+		<?php echo $MSG_DATE_ARRAY["Minute"].":"?><input class=input-mini  type=text name=eminute value=00 size=2 ></p>
+	<?php echo $MSG_Public."/".$MSG_Private.":"?><select name=private><option value=0><?php echo $MSG_Public?></option><option value=1><?php echo $MSG_Private?></option></select>
+	<?php echo $MSG_PASSWORD.":"?><input type=text name=password value="">
+	<?php echo $MSG_LANG.":"?><select name="lang[]" multiple="multiple"    style="height:60px">
 	<?php
 $lang_count=count($language_ext);
 
@@ -159,12 +162,12 @@ $lang_count=count($language_ext);
 
         </select>
 	<?php require_once("../include/set_post_key.php");?>
-	<br>Problems:<input class=input-xxlarge type=text size=60 name=cproblem value="<?php echo isset($plist)?$plist:""?>">
+	<br><?php echo $MSG_PROBLEM.":"?><input class=input-xxlarge type=text size=60 name=cproblem value="<?php echo isset($plist)?$plist:""?>">
 	<br>
-	<p align=left>Description:<br><textarea class=kindeditor rows=13 name=description cols=80></textarea>
+	<p align=left><?php echo $MSG_Description.":"?><br><textarea class=kindeditor rows=13 name=description cols=80></textarea>
 
 
-	Users:<textarea name="ulist" rows="20" cols="20"></textarea>
+		<?php echo $MSG_USER.":"?><textarea name="ulist" rows="20" cols="20"></textarea>
 	<br />
 	*可以将学生学号从Excel整列复制过来，然后要求他们用学号做UserID注册,就能进入Private的比赛作为作业和测验。
 	<p><input type=submit value=Submit name=submit><input type=reset value=Reset name=reset></p>

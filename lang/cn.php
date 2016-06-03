@@ -7,6 +7,7 @@
 	$MSG_RANKLIST="排名";
 	$MSG_CONTEST="竞赛&作业";
     $MSG_RECENT_CONTEST="名校联赛";
+	$MSG_RECENT="最近";
 	$MSG_LOGOUT="注销";
 	$MSG_LOGIN="登录";
 	$MSG_REGISTER="注册";
@@ -111,7 +112,7 @@
 	$MSG_SEEOJ="查看前台";
 	$MSG_ADD="添加";
 	$MSG_LIST="列表";
-	$MSG_NEWS="新闻";
+	$MSG_NEWS="新闻或通知";
 	$MSG_TEAMGENERATOR="比赛队帐号生成器";
 	$MSG_SETMESSAGE="设置公告";
 	$MSG_SETPASSWORD="修改密码";
@@ -137,4 +138,33 @@
   	$MSG_SOURCE_NOT_ALLOWED_FOR_EXAM="考试期间，不能查阅以前提交的代码。";
   	$MSG_BBS_NOT_ALLOWED_FOR_EXAM="考试期间,讨论版禁用。";
   	$MSG_MAIL_NOT_ALLOWED_FOR_EXAM="考试期间,内邮禁用。";
+	// modifypage.php
+	$MSG_UPDATE="更新信息";
+	$MSG_OLD="旧";
+	$MSG_NEW="新";
+
+
+    /*************** admin *******************/
+	$MSG_CONTENT="内容";
+	$MSG_DATE="时间";
+	$MSG_STATUS="状态";
+	$MSG_OPERATION="操作";
+	$MSG_EDIT="编辑";
+	$MSG_DELETE="删除";
+	$MSG_COPY="复制";
+	$MSG_LOGS="日志";
+	$MSG_TEST_INPUT="测试输入";
+	$MSG_TEST_OUTPUT="测试输出";
+	$MSG_TESTDATA="测试数据";
+	$MSG_CHECK_OUT_CONTENT="检出到新比赛";
+	$MSG_DATE_ARRAY=array(
+		"StartTime"=>"开始时间",
+		"EndTime"=>"结束时间",
+		"Year"=>"年",
+		"Month"=>"月",
+		"Day"=>"日",
+		"Hour"=>"时",
+		"Minute"=>"分"
+	);
+	$MSG_EXPORT
 ?>

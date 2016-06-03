@@ -7,7 +7,8 @@
 	$MSG_STATUS="Status";
 	$MSG_RANKLIST="Ranklist";
 	$MSG_CONTEST="Contest";
-  $MSG_RECENT_CONTEST="Recent";
+	$MSG_RECENT_CONTEST="Recent";
+	$MSG_RECENT="Recent";
 	$MSG_LOGOUT="Logout";
 	$MSG_LOGIN="Login";
 	$MSG_REGISTER="Register";
@@ -131,5 +132,32 @@ $MSG_TEST_RUN="Test Running Done";
   $MSG_SOURCE_NOT_ALLOWED_FOR_EXAM="You can't browse early code during examing 。";
   $MSG_BBS_NOT_ALLOWED_FOR_EXAM="You can't use bbs during examing 。";
   $MSG_MAIL_NOT_ALLOWED_FOR_EXAM="You can't use mail during examing 。";
-  
+	// modifypage.php
+	$MSG_UPDATE="Update Information";
+	$MSG_OLD="Old";
+	$MSG_NEW="New";
+
+	/***************   admin *******************/
+	$MSG_NEWS=" News OR Notice";
+	$MSG_CONTENT="Content";
+	$MSG_DATE="Date";
+	$MSG_STATUS="Status";
+	$MSG_OPERATION="Operation";
+	$MSG_EDIT="Edit";
+	$MSG_DELETE="Delete";
+	$MSG_COPY="Copy";
+	$MSG_LOGS="Logs";
+	$MSG_TEST_INPUT="Test Input";
+	$MSG_TEST_OUTPUT="Test Output";
+	$MSG_TESTDATA="Test Data";
+	$MSG_CHECK_OUT_CONTENT="Check To New Contest";
+	$MSG_DATE_ARRAY=array(
+		"StartTime"=>"Start Time",
+		"EndTime"=>"End Time",
+		"Year"=>"Year",
+		"Month"=>"Month",
+		"Day"=>"Day",
+		"Hour"=>"Hour",
+		"Minute"=>"Minute"
+	);
 ?>

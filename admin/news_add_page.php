@@ -14,16 +14,20 @@ if (!(isset($_SESSION['administrator']))){
 	echo "<a href='../loginpage.php'>Please Login First!</a>";
 	exit(1);
 }
+if(isset($OJ_LANG)){
+	require_once("../lang/$OJ_LANG.php");
+}
 ?>
 <?php
 include_once("kindeditor.php") ;
 ?>
-<form method=POST action=news_add.php>
+<center>
+	<h2><?php echo $MSG_ADD.$MSG_NEWS ?></h2>
+</center>
+<form method="POST" action="newsAdd.php">
+<p align=left><?php echo $MSG_TITLE.":" ?><input type=text name=title size=71></p>
 
-<p align=left>Post a News</p>
-<p align=left>Title:<input type=text name=title size=71></p>
-
-<p align=left>Content:<br>
+<p align=left><?php echo $MSG_CONTENT.":"?><br>
 <textarea class=kindeditor name=content ></textarea>
 </p>
 <input type=submit value=Submit name=submit>
